@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ECommmerceSite.Models.IRepositories
 {
-    public interface ICompanyRepository
+    public interface ICompanyRepository 
     {
         bool Create (Company company);
 

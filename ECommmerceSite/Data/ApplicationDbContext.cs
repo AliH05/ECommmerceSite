@@ -16,5 +16,7 @@ namespace ECommmerceSite.Data
 
         }
         public DbSet<Company> Companies { get; set; }
+        public DbSet<Product> Products { get; set; }
+
     }
 }
