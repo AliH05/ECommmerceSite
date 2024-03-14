@@ -1,5 +1,6 @@
 using ECommmerceSite.Data;
 using ECommmerceSite.Models.Identity;
+using ECommmerceSite.Models.Repositories;
 using ECommmerceSite.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -38,6 +39,9 @@ namespace ECommmerceSite
             services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddControllersWithViews();
             services.AddTransient<UserService>();
+            services.AddTransient<CompanyRepository>();
+            services.AddTransient<CompanyService>();
+
             services.AddRazorPages().AddRazorRuntimeCompilation();
 
         }
