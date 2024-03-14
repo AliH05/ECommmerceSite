@@ -1,4 +1,5 @@
-﻿using ECommmerceSite.Models.Identity;
+﻿using ECommmerceSite.Models;
+using ECommmerceSite.Models.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -14,5 +15,6 @@ namespace ECommmerceSite.Data
         {
 
         }
+        public DbSet<Company> Companies { get; set; }
     }
 }
