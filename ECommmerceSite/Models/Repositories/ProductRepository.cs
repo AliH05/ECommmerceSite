@@ -1,5 +1,6 @@
 ﻿using ECommmerceSite.Data;
 using ECommmerceSite.Models.IRepositories;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -45,7 +46,9 @@ namespace ECommmerceSite.Models.Repositories
 
         public IEnumerable<Product> GetAllProducts()
         {
-            var products = _context.Products.ToList();
+            var products = _context.Products.Include(x => x.Company).
+                                             Include(x => x.Category).ToList();
+
             return products;
         }
 
@@ -69,7 +72,11 @@ namespace ECommmerceSite.Models.Repositories
                 return false;
             }
         }
+        public IEnumerable<Category> GetAllCategories() 
+        {
+            var categories = _context.Categories.ToList();
+            return categories;
+        }
     }
 }
 
-//https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/IPhone_1st_Gen.svg/1200px-IPhone_1st_Gen.svg.png

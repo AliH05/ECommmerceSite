@@ -43,5 +43,10 @@ namespace ECommmerceSite.Services
             bool updatedProduct = _productRepository.Update(product);
             return updatedProduct;
         }
+        public IEnumerable<Category> GetAllCategories() 
+        {
+            var gottenCategories = _productRepository.GetAllCategories();
+            return gottenCategories;
+        }
     }
 }
