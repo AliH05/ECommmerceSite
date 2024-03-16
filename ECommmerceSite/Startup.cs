@@ -41,6 +41,8 @@ namespace ECommmerceSite
             services.AddTransient<UserService>();
             services.AddTransient<CompanyRepository>();
             services.AddTransient<CompanyService>();
+            services.AddTransient<TransactionRepository>();
+            services.AddTransient<TransactionService>();
             services.AddTransient<ProductRepository>();
             services.AddTransient<ProductService>();
 
