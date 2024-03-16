@@ -1,7 +1,9 @@
 ﻿using ECommmerceSite.Models;
 using ECommmerceSite.Models.Identity;
+using ECommmerceSite.Models.ViewModels;
 using ECommmerceSite.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace ECommmerceSite.Controllers
 {
@@ -23,16 +25,17 @@ namespace ECommmerceSite.Controllers
             return View(Products);
         }
 
-
-
         [HttpGet]
         public IActionResult Create()
         {
-            return View();
+            var productVM = new ProductCreateViewModel();
+            productVM.Categories = _productService.GetAllCategories().ToList();
+            return View(productVM);
         }
         [HttpPost]
         public IActionResult Create(Product product)
         {
+
             product.UserID = _currentUser.Id;
             product.CompanyID = _currentUser.CompanyId;
             var createdProduct = _productService.Create(product);

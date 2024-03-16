@@ -23,5 +23,10 @@ namespace ECommmerceSite.Models
         [ForeignKey("AspNetUsers")]
         public int? UserID { get; set; }
 
+        [ForeignKey("Categories")]
+        public int? CategoryID { get; set; }
+
+        public virtual Category Category { get; set; }
     }
+
 }
