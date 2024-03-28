@@ -1,6 +1,7 @@
 ﻿using ECommmerceSite.Models;
 using ECommmerceSite.Models.IRepositories;
 using ECommmerceSite.Models.Repositories;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,5 +39,10 @@ namespace ECommmerceSite.Services
             return transactions;
         }
 
+        public IEnumerable<CreditCard> GetAllCreditCardsByUser(int userId)
+        {
+            var getCreditCards = _transactionRepository.GetCreditCardsByUserId(userId);
+            return getCreditCards;
+        }
     }
 }
