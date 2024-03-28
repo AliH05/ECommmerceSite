@@ -1,5 +1,6 @@
 ﻿using ECommmerceSite.Data;
 using ECommmerceSite.Models.IRepositories;
+using ECommmerceSite.Services;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -8,10 +9,12 @@ namespace ECommmerceSite.Models.Repositories
     public class TransactionRepository : ITransactionRepository
     {
         private readonly ApplicationDbContext _context;
+        private readonly CreditCardService _creditCardService;
 
-        public TransactionRepository(ApplicationDbContext context)
+        public TransactionRepository(ApplicationDbContext context, CreditCardService creditCardService)
         {
             _context = context;
+            _creditCardService = creditCardService;
         }
 
         public bool Create(Transaction transaction)
@@ -38,6 +41,12 @@ namespace ECommmerceSite.Models.Repositories
         {
             Transaction transaction = _context.Transactions.SingleOrDefault(x => x.ID == transactionId);
             return transaction;
+        }
+
+        public IEnumerable<CreditCard> GetCreditCardsByUserId (int userId)
+        {
+            var getCreditCards = _creditCardService.GetCreditCardsByUserId(userId);
+            return getCreditCards;
         }
     }
 }

@@ -45,7 +45,8 @@ namespace ECommmerceSite
             services.AddTransient<TransactionService>();
             services.AddTransient<ProductRepository>();
             services.AddTransient<ProductService>();
-
+            services.AddTransient<CreditCardRepository>();
+            services.AddTransient<CreditCardService>();
             services.AddRazorPages().AddRazorRuntimeCompilation();
 
         }

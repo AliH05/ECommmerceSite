@@ -33,6 +33,20 @@ namespace ECommmerceSite.Services
             double rewardPoints = productPrice / 2;
             return rewardPoints;
         }
+
+        public bool ValidatePointsForTransaction(double transactionTotal)
+        {
+            var user = GetCurrentUser();
+            return user.UserRewardPoints >= transactionTotal * 5;
+
+        }
+
+        public async Task UpdateCurrentUser()
+        {
+            await _userManager.UpdateAsync(GetCurrentUser());
+        }
+
+
         public async Task<AppUser> MapUserUpdates(AppUser updatedUser, AppUser currentUser, UserManager<AppUser> userManager)
         {
             if (!String.IsNullOrEmpty(updatedUser.Email))
